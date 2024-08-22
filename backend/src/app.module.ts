@@ -5,9 +5,21 @@ import { AuthModule } from './modules/auth/auth.module';
 import { UserModule } from './modules/user/user.module';
 import { IncomeModule } from './modules/income/income.module';
 import { ExpenseModule } from './modules/expense/expense.module';
+import { DatabaseModule } from './modules/database/database.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [AuthModule, UserModule, IncomeModule, ExpenseModule],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      expandVariables: true,
+    }),
+    AuthModule,
+    UserModule,
+    IncomeModule,
+    ExpenseModule,
+    DatabaseModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

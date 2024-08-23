@@ -8,7 +8,8 @@ export const getPostgresConfig = (
   url: configService.get<string>('DATABASE_URL'),
   port: configService.get<number>('DATABASE_PORT'),
   entities: [__dirname + '../../**/*.entity{.ts,.js}'],
-  synchronize: true, // should be false in production
+  synchronize: true,
+  migrations: ['src/database/migrations/**/*{.ts,.js}'],
   ssl: {
     rejectUnauthorized: false,
   },

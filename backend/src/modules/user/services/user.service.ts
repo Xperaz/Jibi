@@ -11,7 +11,17 @@ export class UserService {
   ) {}
 
   async findUserByEmail(email: string) {
-    return await this.userRepository.findOne({ where: { email } });
+    const userInfo = await this.userRepository.findOne({ where: { email } });
+    delete userInfo.password;
+
+    return userInfo;
+  }
+
+  async findUserById(id: string) {
+    const userInfo = await this.userRepository.findOne({ where: { id } });
+    delete userInfo.password;
+
+    return userInfo;
   }
 
   createUser(user: Partial<UserEntity>): UserEntity {

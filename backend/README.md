@@ -15,9 +15,9 @@ Expense Tracker App Development Roadmap
 
 3. Category Management
 
-- Create CRUD operations for categories
-- Implement endpoints for listing, creating, updating, and deleting categories
-- Add validation for category types (expense/income)
+- Create CRUD operations for categories ✅
+- Implement endpoints for listing, creating, updating, and deleting categories ✅
+- Add validation for category types (expense/income) ✅
 
 4. Expense Management
 

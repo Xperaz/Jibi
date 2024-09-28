@@ -1,20 +1,20 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
 import { AuthService } from '../services/auth.service';
-import { Repository } from 'typeorm';
-import { AuthDto } from '../dto';
+import { SignInDto, SignUpDto } from '../dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Auth')
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('signup')
-  signUp(@Body() authDto: AuthDto) {
+  signUp(@Body() authDto: SignUpDto) {
     return this.authService.signUp(authDto);
   }
 
   @Post('signin')
-  signIn(@Body() authDto: AuthDto) {
+  signIn(@Body() authDto: SignInDto) {
     return this.authService.signIn(authDto);
   }
 }

@@ -3,11 +3,11 @@ import {
   ForbiddenException,
   Injectable,
 } from '@nestjs/common';
-import { AuthDto } from '../dto';
 import * as argon from 'argon2';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { UserService } from 'src/modules/user/services/user.service';
+import { SignInDto, SignUpDto } from '../dto';
 
 @Injectable()
 export class AuthService {
@@ -16,7 +16,7 @@ export class AuthService {
     private readonly jwtService: JwtService,
     private readonly configService: ConfigService,
   ) {}
-  async signUp(authDto: AuthDto) {
+  async signUp(authDto: SignUpDto) {
     const existingUser = await this.userService.findUserByEmail(authDto.email);
 
     if (!existingUser) {
@@ -36,7 +36,7 @@ export class AuthService {
     throw new ConflictException('This email already in use');
   }
 
-  async signIn(authDto: AuthDto) {
+  async signIn(authDto: SignInDto) {
     const user = await this.userService.findUserByEmail(authDto.email);
 
     if (!user) {
@@ -67,7 +67,7 @@ export class AuthService {
 
     const token = await this.jwtService.signAsync(payload, {
       secret: secret,
-      expiresIn: '7d', // Set the expiration time to 1 hour
+      expiresIn: '7d',
     });
 
     return {

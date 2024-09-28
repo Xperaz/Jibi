@@ -2,16 +2,16 @@ Expense Tracker App Development Roadmap
 
 1. User Authentication (Completed)
 
-- Implement signup functionality
-- Implement signin functionality
-- Generate JWT tokens
-- Store users in the database
+- Implement signup functionality ✅
+- Implement signin functionality ✅
+- Generate JWT tokens ✅
+- Store users in the database ✅
 
 2. User Profile Management
 
-- Create endpoint to fetch user profile
-- Implement update user profile functionality
-- Add change password feature
+- Create endpoint to fetch user profile ✅
+- Implement update user profile functionality ✅
+- Add change password feature ✅
 
 3. Category Management
 
@@ -63,7 +63,6 @@ Expense Tracker App Development Roadmap
 - Write unit tests for services
 - Implement integration tests for API endpoints
 - Perform security testing
-
 
 12. Performance Optimization
 
